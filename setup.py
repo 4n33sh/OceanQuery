@@ -1,61 +1,25 @@
-import os
-import sys
-from distutils.version import StrictVersion
+from setuptools import setup, find_packages
 
-import setuptools
-from setuptools import __version__ as setuptools_version
-from setuptools import find_packages
-from setuptools.command.test import test as TestCommand
-
-if StrictVersion(setuptools_version) < StrictVersion('38.3.0'):
-    raise SystemExit(
-        'Your `setuptools` version is old. '
-        'Please upgrade setuptools by running `pip install -U setuptools` '
-        'and try again.'
-    )
-
-
-def readme():
-    with open('README.md') as f:
-        return f.read()
-
-
-setuptools.setup(
-    name='argofloats',
-    version='0.0.7',
-    packages=['argofloats'],
-    url='https://github.com/samapriya/argofloats',
-    install_requires=['requests>=2.24.0',
-                      'area>=1.1.1',
-                      'beautifulsoup4>=4.10.0',
-                      'geojson>=2.5.0',
-                      'tenacity>=8.0.1',
-                      'pandas>=1.3.5',
-                      'pyproj>=1.9.5.1;platform_system!="Windows"',
-                      'shapely>=1.7.1;platform_system!="Windows"',
-                      'fiona>=1.8.20;platform_system!="Windows"',
-                      'geopandas>=0.9.0;platform_system!="Windows"'
-                      ],
-    license='Apache 2.0',
-    long_description=open('README.md').read(),
-    long_description_content_type='text/markdown',
-    python_requires='>=3.4',
-    classifiers=[
-        'Development Status :: 3 - Alpha',
-        'Intended Audience :: Developers',
-        'Intended Audience :: Science/Research',
-        'Natural Language :: English',
-        'License :: OSI Approved :: Apache Software License',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Operating System :: OS Independent',
-        'Topic :: Scientific/Engineering :: GIS',
+setup(
+    name="argo_langchain_pipeline",
+    version="0.1",
+    packages=find_packages(),
+    install_requires=[
+        "langchain>=1.0",
+        "xarray",
+        "numpy",
+        "pandas",
+        "netCDF4",
+        "matplotlib",
+        "requests"
     ],
-    author='Samapriya Roy',
-    author_email='samapriya.roy@gmail.com',
-    description='Simple CLI for ArgoVis & Argofloats',
+    include_package_data=True,
+    package_data={
+        "": ["pyowc/*", "utils/*", "argofloats/*", "processing/*", "owc_config.json"]
+    },
     entry_points={
-        "console_scripts": ["argofloats=argofloats.argofloats:main"]
+        "console_scripts": [
+            "argo-run=main:main"
+        ]
     },
 )
