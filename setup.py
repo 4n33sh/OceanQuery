@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="argo_langchain_pipeline",
+    name="floatchat_pipeline",
     version="0.1",
     packages=find_packages(),
     install_requires=[
@@ -11,7 +11,13 @@ setup(
         "pandas",
         "netCDF4",
         "matplotlib",
-        "requests"
+        "requests",
+        "faiss-cpu",
+        "chromadb",
+        "streamlit",
+        "plotly",
+        "leaflet",
+        "sqlalchemy"
     ],
     include_package_data=True,
     package_data={
@@ -19,7 +25,7 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "argo-run=main:main"
+            "floatchat-run=main:main"
         ]
     },
 )
