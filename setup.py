@@ -17,7 +17,8 @@ setup(
         "streamlit",
         "plotly",
         "leaflet",
-        "sqlalchemy"
+        "sqlalchemy",
+        "spacy"
     ],
     include_package_data=True,
     package_data={
