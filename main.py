@@ -8,10 +8,12 @@
 #before running the script, install dependencies from requirements.txt: pip install -r requirements.txt
 
 import os
-from langchain.chains import SequentialChain
+import spacy
 from langchain.chains import LLMChain
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
+from langchain.vectorstores import Chroma
+from langchain.embeddings import OpenAIEmbeddings
 
 from argofloats import floats, profiles
 from pyowc import calibration
@@ -22,9 +24,12 @@ from processing import reuse_MITprofAnalysis as mitprof_analysis
 from processing import reuse_MITprofStat as mitprof_stat
 
 OWC_CONFIG_PATH = os.path.join(os.path.dirname(__file__), "owc_config.json")
-VECTOR_DB_PATH = os.path.join(os.path.dirname(__file__), "vector_db/")  # FAISS/Chroma
+VECTOR_DB_PATH = os.path.join(os.path.dirname(__file__), "vector_db/")
 
 llm = OpenAI(temperature=0)
+embeddings = OpenAIEmbeddings()
+vectorstore = Chroma(persist_directory=VECTOR_DB_PATH, embedding_function=embeddings)
+nlp = spacy.load("en_core_web_sm")
 
 prompt = PromptTemplate(
     input_variables=["user_query"],
@@ -64,13 +69,15 @@ def calibrate_profiles(mitprof_profiles):
 
 
 def ingest_to_vector_db(profiles_data):
-#just empty (like an goto)
-    pass
+    docs = [str(p) for p in profiles_data]
+    vectorstore.add_texts(docs)
+    vectorstore.persist()
 
 
 def chat_query(user_query):
-
-    db_results = "Retrieve relevant ARGO profiles via vector DB"  # placeholder
+    doc = nlp(user_query)
+    retrieved = vectorstore.similarity_search(user_query, k=3)
+    db_results = [r.page_content for r in retrieved]
     llm_input = f"User Query: {user_query}\nRetrieved Profiles: {db_results}"
     response = llm_chain.run(user_query=llm_input)
     return response
@@ -79,16 +86,15 @@ def chat_query(user_query):
 def main():
     float_ids = ["5904461", "5904462"]
     raw_profiles = retrieve_profiles(float_ids)
-    
     mitprof_data, analysis_results, stats_results = process_profiles(raw_profiles)
     calibrated_profiles = calibrate_profiles(mitprof_data)
     ingest_to_vector_db(calibrated_profiles)
     user_query = "Show me salinity profiles near the equator in March 2023"
     response = chat_query(user_query)
-  
     print("AI Response:", response)
     print("Launch interactive Streamlit/Plotly dashboard to visualize calibrated profiles.")
 
 
 if __name__ == "__main__":
     main()
+
