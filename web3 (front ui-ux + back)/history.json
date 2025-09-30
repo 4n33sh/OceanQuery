@@ -1,0 +1,72 @@
+[
+  {
+    "id": "ee09a00c-6c87-4965-9ac1-e01182b1fd85",
+    "title": "Equatorial Temperature and Salinity Profiles",
+    "query": "Retrieve Argo temperature profiles near the equator for March 2023",
+    "reply": "FloatChat analysis: Fetched Argo temperature profiles between -2° and +2° latitude for March 2023. Surface warming trends and thermocline signatures noted.",
+    "plot": null
+  },
+  {
+    "id": "21d5ab89-34f7-49ff-9262-b0ea30e053a5",
+    "title": "Pacific Ocean Salinity Drift",
+    "query": "Analyze salinity drift in Argo floats in the central Pacific, March 2023",
+    "reply": "FloatChat analysis: Most profiles show salinity bias below 0.03 PSU, consistent with recent literature. Slight freshening near the surface observed.",
+    "plot": null
+  },
+  {
+    "id": "3fd54c79-370f-41b8-aca0-b084faf835f1",
+    "title": "Atlantic Ocean Mixed Layer",
+    "query": "Fetch Argo mixed layer salinity and temperature profiles in the Atlantic for March 2023",
+    "reply": "FloatChat analysis: Mixed layer depths and salinity gradients match expected climatology. Surface variability and mid-depth stability evident.",
+    "plot": null
+  },
+  {
+    "id": "bcb2ec47-8ac7-4adf-a784-eaabb95c0471",
+    "title": "Indian Ocean Equatorial Profiles",
+    "query": "Retrieve Argo temperature and salinity profiles near 0° latitude in Indian Ocean for March 2023",
+    "reply": "FloatChat analysis: Profiles indicate warm surface waters with salinity increasing from mid-layer to deep layer. Thermocline present at ~100-200 dbar.",
+    "plot": null
+  },
+  {
+    "id": "7871f572-2b74-4896-a437-6c51ff276d5f",
+    "title": "Salinity Vertical Gradients",
+    "query": "Examine vertical salinity gradients from Argo floats at equatorial Pacific, March 2023",
+    "reply": "FloatChat analysis: Gradients show low variability at surface, stabilization mid-depth, slight increase below 200 dbar. Matches expected oceanographic patterns.",
+    "plot": null
+  },
+  {
+    "id": "768ab154-fa59-4af9-9c47-91e434dd6149",
+    "title": "Thermocline Depth Analysis",
+    "query": "Determine thermocline depth from equatorial Argo temperature profiles, March 2023",
+    "reply": "FloatChat analysis: Thermocline depth observed between 100-150 dbar with typical equatorial warming patterns. Profiles consistent across floats.",
+    "plot": null
+  },
+  {
+    "id": "58c054ab-54b1-4609-8ea8-d6b625f6d18d",
+    "title": "Surface Salinity Fluctuations",
+    "query": "Analyze surface salinity fluctuations from Argo floats at equator for March 2023",
+    "reply": "FloatChat analysis: Surface layers show higher variability, likely due to precipitation and freshwater inputs. Deeper layers stable.",
+    "plot": null
+  },
+  {
+    "id": "29fd4432-1645-4720-84b0-73a4533686af",
+    "title": "Mid-Layer Stability",
+    "query": "Check salinity and temperature stability in mid-layer (50-200 dbar) from Argo floats, equator March 2023",
+    "reply": "FloatChat analysis: Mid-layer shows stable salinity and temperature with minor fluctuations. Matches climatology predictions.",
+    "plot": null
+  },
+  {
+    "id": "6ef36ae0-b159-4f93-ab37-28e1e0d47e8d",
+    "title": "Deep Layer Salinity Profiles",
+    "query": "Retrieve salinity profiles below 500 dbar near equator, March 2023",
+    "reply": "FloatChat analysis: Deep layer salinity gradually increases and stabilizes below 500 dbar. Minimal drift observed.",
+    "plot": null
+  },
+  {
+    "id": "48bd97df-67aa-42e7-a19e-a7a6031a68da",
+    "title": "Equatorial Ocean Summary",
+    "query": "Summarize overall equatorial ocean profiles from Argo floats, March 2023",
+    "reply": "FloatChat analysis: Combined observations indicate expected equatorial patterns: variable surface, stable mid-layer, gradual deep salinity increase, and consistent temperature gradients.",
+    "plot": null
+  }
+]
