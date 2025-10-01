@@ -12,3 +12,5 @@ plotly==5.10.0
 leaflet==0.0.1
 sqlalchemy==2.0.18
 spacy==3.6.0
+
+#use this if setup does not function/has outdated/vuln modules
